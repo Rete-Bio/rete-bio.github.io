@@ -3,266 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rete Bio | The Network of Life</title>
-    <meta name="description" content="Rete Bio - Connecting the dots in Life Sciences. Established 2025.">
+    <title>Rete.bio | The Verifiable Analyst</title>
+    <meta name="description" content="Rete.bio is the Glass Box AI for drug discovery. We replace black-box hallucinations with verifiable, executable Python code.">
+    
+    <!-- Google Fonts: Inter for that clean Startup look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
-        /* --- MODERN RESET & BASE STYLES --- */
         :root {
-            --primary: #0ea5e9;       /* Vivid Sky Blue */
-            --secondary: #14b8a6;     /* Bio-Teal Accent */
-            --dark: #020617;          /* Deepest Slate/Black */
-            --panel: #0f172a;         /* Slightly lighter for panels */
-            --light: #f1f5f9;         /* Off-white text */
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            /* Palette: Clinical, Trustworthy, Modern */
+            --bg-color: #F8FAFC; /* Slate 50 */
+            --text-primary: #0F172A; /* Slate 900 */
+            --text-secondary: #475569; /* Slate 600 */
+            --accent: #0F766E; /* Teal 700 - Represents Biology */
+            --accent-light: #CCFBF1; /* Teal 100 */
+            --code-bg: #FFFFFF;
+            --border: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-main);
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 {
-            margin: 0;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            font-size: 1.15rem;
-            color: #94a3b8; /* Slate gray text */
-            max-width: 65ch;
-            margin-bottom: 1.5rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--secondary);
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--primary);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, var(--dark) 100%);
-            position: relative;
-        }
-
-        /* Abstract background "Cell/Network" effect */
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(#14b8a6 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 9vw, 7rem);
-            background: linear-gradient(135deg, var(--light) 30%, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: #cbd5e1;
-            margin-bottom: 4rem;
-            z-index: 1;
-        }
-
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-            font-size: 2rem;
-            color: var(--secondary);
-            opacity: 0.8;
-            z-index: 1;
-        }
-
-        /* --- STORY SECTIONS --- */
-        .story-container {
-            max-width: 800px;
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 0 24px;
         }
 
-        .chapter {
-            margin-bottom: 10rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 1s forwards;
-            border-left: 2px solid var(--panel);
-            padding-left: 2.5rem;
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 24px; }
+        h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        
+        p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .highlight {
+            color: var(--accent);
             position: relative;
+            display: inline-block;
         }
-
-        .chapter::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 6px;
-            width: 16px;
-            height: 16px;
-            background: var(--dark);
-            border: 2px solid var(--secondary);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
-        }
-
-        .chapter h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--light);
+        
+        /* --- Navigation --- */
+        nav {
+            padding: 24px 0;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
         }
 
-        .highlight-text {
-            color: var(--light);
-            font-weight: 600;
-            border-bottom: 2px solid var(--secondary);
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            letter-spacing: -0.05em;
         }
 
-        /* --- CTA SECTION --- */
-        .cta-section {
-            background: var(--panel);
-            padding: 6rem 2rem;
-            text-align: center;
-            border-top: 1px solid #1e293b;
-        }
+        .logo span { color: var(--accent); }
 
         .btn {
             display: inline-block;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            color: var(--dark);
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-top: 2rem;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: var(--text-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
-            color: var(--dark);
+            background-color: var(--accent);
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        /* --- Hero Section --- */
+        .hero {
+            padding-top: 100px;
+            padding-bottom: 60px;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
+        .tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 24px;
         }
 
-        .chapter:nth-child(1) { animation-delay: 0.2s; }
-        .chapter:nth-child(2) { animation-delay: 0.4s; }
-        .chapter:nth-child(3) { animation-delay: 0.6s; }
-        .chapter:nth-child(4) { animation-delay: 0.8s; }
+        /* --- The "Glass Box" Visual --- */
+        .glass-box-container {
+            margin-top: 60px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--accent);
+        }
 
+        .window-header {
+            background: #F1F5F9;
+            padding: 12px 20px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #CBD5E1; }
+        .dot.red { background: #FDA4AF; }
+        .dot.yellow { background: #FDBA74; }
+        .dot.green { background: #86EFAC; }
+
+        .window-body {
+            display: flex;
+            flex-direction: row;
+            min-height: 400px;
+        }
+
+        .chat-panel {
+            width: 40%;
+            padding: 30px;
+            border-right: 1px solid var(--border);
+            background: #FAFAFA;
+        }
+
+        .code-panel {
+            width: 60%;
+            padding: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #334155;
+            background: #FFFFFF;
+        }
+
+        .chat-bubble {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .chat-bubble.user { border-left: 3px solid var(--text-primary); }
+        .chat-bubble.ai { border-left: 3px solid var(--accent); background: var(--accent-light); border-color: transparent;}
+
+        .code-line { display: block; margin-bottom: 4px; }
+        .comment { color: #94A3B8; }
+        .keyword { color: #0F766E; font-weight: 600; }
+        .function { color: #2563EB; }
+
+        /* --- Features --- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s;
+        }
+        
+        .card:hover { border-color: var(--accent); }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 100px;
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .window-body { flex-direction: column; }
+            .chat-panel, .code-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border);}
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
-    <header class="hero">
-        <h1>Rete Bio</h1>
-        <p>Redefining the architecture of Life Sciences.</p>
-        <div class="scroll-indicator">↓</div>
-    </header>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">rete<span>.bio</span></div>
+            <a href="mailto:hello@rete.bio" class="btn">Request Demo</a>
+        </nav>
 
-    <!-- THE NARRATIVE -->
-    <main class="story-container">
-        
-        <!-- Chapter 1 -->
-        <section class="chapter">
-            <h2>The Inception</h2>
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="tagline">From Black Box to Glass Box</span>
+            <h1>The verifiable analyst for <br><span class="highlight">Precision Drug Discovery.</span></h1>
             <p>
-                The year is <span class="highlight-text">2025</span>. Biology is no longer just a study of observation; it is an engineering discipline. 
-                Yet, we noticed a critical fracture. As data exploded in volume, the gap between raw information and actionable insight grew wider.
+                Pharma doesn't trust AI that guesses. Rete is an agentic platform that translates biological questions into 
+                <strong>executable, auditable Python code</strong>. We find the causal mechanism, and we show our work.
             </p>
-            <p>
-                We realized that the future of health wasn't just about discovering new molecules—it was about <strong>connecting</strong> the ones we already knew.
-            </p>
+
+            <!-- The Glass Box Demo Visual -->
+            <div class="glass-box-container">
+                <div class="window-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <div style="margin-left: 10px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #64748B;">rete_analyst_session_01.py</div>
+                </div>
+                <div class="window-body">
+                    <!-- Left: The Conversation -->
+                    <div class="chat-panel">
+                        <div class="chat-bubble user">
+                            <strong>User:</strong> Find a ligand-receptor pair at the tumor boundary causing T-cell exhaustion.
+                        </div>
+                        <div class="chat-bubble ai">
+                            <strong>Rete Agent:</strong> I will segment the tumor stroma, isolate the interface, and compute spatial neighbors for potential inhibitory ligands.
+                            <br><br>
+                            <em>Executing analysis...</em>
+                        </div>
+                    </div>
+                    <!-- Right: The Code (The Truth) -->
+                    <div class="code-panel">
+                        <span class="code-line comment"># 1. Calculate spatial neighbors in the tissue</span>
+                        <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
+                        <span class="code-line"><span class="function">sq.gr.spatial_neighbors</span>(adata)</span>
+                        <br>
+                        <span class="code-line comment"># 2. Filter for Tumor-Stroma Interface</span>
+                        <span class="code-line">interface = adata.obs[<span class="function">neighbors_tumor</span> & <span class="function">neighbors_tcell</span>]</span>
+                        <br>
+                        <span class="code-line comment"># 3. Test for PVR (Ligand) and TIGIT (Receptor)</span>
+                        <span class="code-line">score = <span class="function">calculate_interaction</span>(interface, 'PVR', 'TIGIT')</span>
+                        <br>
+                        <span class="code-line"><span class="keyword">print</span>(f"Interaction Score: {score}")</span>
+                        <span class="code-line">>> Interaction Score: 0.94 (Significant)</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Chapter 2 -->
-        <section class="chapter">
-            <h2>The Complexity</h2>
-            <p>
-                Life Sciences has always suffered from "silos." Genomics, proteomics, and clinical data often speak different languages. 
-                Researchers were drowning in noise, unable to hear the signal. 
-                We asked ourselves: <em>What if biology was treated not as a list of parts, but as a network?</em>
-            </p>
+        <!-- The Problem Section -->
+        <section id="story">
+            <div class="grid">
+                <div>
+                    <h2>The Problem: <br>Trust vs. Speed</h2>
+                    <p>
+                        Generative AI is transforming biotech, but LLMs suffer from a critical fatal flaw: <strong>Hallucination</strong>.
+                    </p>
+                    <p>
+                        In target identification, a "probably right" answer is dangerous. You cannot put a neural network's intuition into a Phase I clinical trial. You need biological evidence.
+                    </p>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>The "Black Box" Era</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">
+                            ❌ Opaque embeddings.<br>
+                            ❌ "Trust the model."<br>
+                            ❌ No audit trail.<br>
+                            ❌ N=1 validation is impossible.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Chapter 3 -->
-        <section class="chapter">
-            <h2>The "Rete" Solution</h2>
-            <p>
-                <em>Rete</em> means "Network." 
-                At Rete Bio, we are building the digital connective tissue for the next generation of biotech. 
-                By weaving together disparate data streams, we create a unified view of biological systems.
-            </p>
-            <p>
-                This isn't just faster processing. It's the ability to see patterns that were previously invisible to the human eye.
-            </p>
+        <!-- The Solution Section -->
+        <section>
+            <div class="grid">
+                <div>
+                    <div class="card" style="border-color: var(--accent);">
+                        <h3 style="color: var(--accent);">The Rete "Glass Box"</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">
+                            ✅ Executable Python Code.<br>
+                            ✅ "Verify the logic."<br>
+                            ✅ Full reproducibility.<br>
+                            ✅ Multi-modal (Spatial + Omics).
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h2>The Solution: <br>Logic, not just Language.</h2>
+                    <p>
+                        Rete is not a search engine. It is an <strong>Architect</strong>.
+                    </p>
+                    <p>
+                        We use advanced agentic workflows to write custom analysis pipelines on the fly. Whether it's 10x Visium spatial data or single-cell RNA-seq, Rete generates the code, runs the math, and proves the result.
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <!-- Chapter 4 -->
-        <section class="chapter">
-            <h2>The 2025 Vision</h2>
-            <p>
-                We are just getting started. Our mission is to compress the timeline of discovery. 
-                From the lab bench to the patient, we are streamlining the flow of biological intelligence.
+        <!-- CTA Section -->
+        <section style="text-align: center; padding: 100px 0;">
+            <h2>Ready to trace the logic?</h2>
+            <p style="margin: 0 auto 32px auto;">
+                We are currently deploying pilots with select biotech partners.
             </p>
-            <p>
-                We invite you to join us as we map the network of life.
-            </p>
+            <a href="mailto:admin@rete.bio" class="btn">Get Early Access</a>
         </section>
 
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="cta-section">
-        <h2>Connect With Us</h2>
-        <p>The network is growing. Be a part of the next evolution in Life Sciences.</p>
-        
-        <!-- Mail link -->
-        <a href="mailto:info@rete.bio" class="btn">Contact Rete Bio</a>
-        
-        <p style="margin-top: 4rem; font-size: 0.9rem; opacity: 0.4; font-family: monospace;">
-            &copy; 2025 Rete Bio. All rights reserved. <br>
-            <span style="color: var(--secondary);">www.rete.bio</span>
-        </p>
-    </footer>
+        <footer>
+            <div class="logo" style="font-size: 1rem; margin-bottom: 12px;">rete<span>.bio</span></div>
+            <p style="font-size: 0.8rem;">&copy; 2025 Rete Bio.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
