@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rete.bio | The Glass Box for Drug Discovery</title>
+    <title>rete.bio | The Glass Box for Drug Discovery</title>
     <meta name="description" content="Rete.bio is the Glass Box AI for Biotech. We replace black-box hallucinations with audit-ready, executable code across the drug discovery pipeline.">
     
     <!-- Google Fonts -->
@@ -184,23 +184,24 @@
                     <!-- Left: The Conversation -->
                     <div class="chat-panel">
                         <div class="chat-bubble user">
-                            <strong>User:</strong> This patient is non-responsive to Anti-PD1. Identify a secondary checkpoint mechanism.
+                            <strong>User:</strong> This patient is non-responsive to Anti-PD1. Integrate H&E histology with the spatial transcriptomics to find a secondary target.
                         </div>
                         <div class="chat-bubble ai">
-                            <strong>Rete Agent:</strong> I will analyze the tumor microenvironment data to find active ligand-receptor pairs at the stromal interface.
+                            <strong>Rete Agent:</strong> I will segment the tumor islands from the H&E image, overlay the RNA expression data, and identify ligand-receptor pairs active at the necrotic boundary.
                             <br><br>
-                            <em>1. Calculating spatial neighbors...</em><br>
-                            <em>2. Filtering for T-cell exhaustion markers...</em><br>
+                            <em>1. Segmenting Tissue (Image)...</em><br>
+                            <em>2. Overlaying Expression (RNA)...</em><br>
                             <em>3. Validating against CellPhoneDB...</em>
                         </div>
                     </div>
                     <!-- Right: The Code (The Truth) -->
                     <div class="code-panel">
-                        <span class="code-line comment"># 1. Isolate the "Battleground" (Tumor Boundary)</span>
+                        <span class="code-line comment"># 1. Fuse Image & Omics Layers</span>
                         <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
-                        <span class="code-line">sq.gr.spatial_neighbors(adata)</span>
+                        <span class="code-line">img = sq.im.ImageContainer(img_path)</span>
+                        <span class="code-line">features = sq.im.calculate_image_features(adata, img)</span>
                         <br>
-                        <span class="code-line comment"># 2. Test for Alternate Checkpoints (TIGIT, LAG3, TIM3)</span>
+                        <span class="code-line comment"># 2. Test for Alternate Checkpoints (TIGIT, LAG3)</span>
                         <span class="code-line">results = <span class="function">analyze_interactions</span>(</span>
                         <span class="code-line">    source=<span class="string">'Tumor_Core'</span>, </span>
                         <span class="code-line">    target=<span class="string">'Stroma_Tcells'</span>, </span>
@@ -209,7 +210,7 @@
                         <br>
                         <span class="code-line comment"># 3. Output Evidence</span>
                         <span class="code-line"><span class="keyword">if</span> results.p_value < 0.05:</span>
-                        <span class="code-line">    <span class="keyword">print</span>(f"Mechanism Identified: PVR-TIGIT Axis (Confidence: 98%)")</span>
+                        <span class="code-line">    <span class="keyword">print</span>(f"Mechanism Identified: PVR-TIGIT Axis")</span>
                     </div>
                 </div>
             </div>
@@ -292,10 +293,10 @@
                 <div class="grid-3">
                     <!-- Example 1 -->
                     <div class="card">
-                        <span class="workflow-tag">// EXAMPLE_01: SPATIAL</span>
-                        <h3>Target Discovery</h3>
+                        <span class="workflow-tag">// EXAMPLE_01: MULTIMODAL FUSION</span>
+                        <h3>Spatial Target ID</h3>
                         <p style="margin-top: 12px; font-size: 0.9rem;">
-                            Deconvolute the tumor microenvironment. Automate complex ligand-receptor analysis on 10x Visium data.
+                            Fuse H&E pathology images with gene expression layers. Deconvolute the tumor microenvironment using both morphology and molecular data.
                         </p>
                     </div>
                     
