@@ -19,6 +19,7 @@
             --text-secondary: #475569; 
             --accent: #0F766E; /* Teal 700 */
             --accent-light: #CCFBF1; 
+            --accent-dark: #134E4A;
             --border: #E2E8F0;
         }
 
@@ -58,6 +59,8 @@
         .btn:hover { transform: translateY(-2px); background-color: var(--accent); }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-primary); margin-left: 10px; }
         .btn-outline:hover { border-color: var(--text-primary); transform: translateY(-2px); background: transparent; }
+        .btn-white { background-color: white; color: var(--accent); }
+        .btn-white:hover { background-color: var(--accent-light); color: var(--accent-dark); transform: translateY(-2px); }
 
         /* Hero */
         .hero { padding-top: 80px; padding-bottom: 60px; }
@@ -98,16 +101,28 @@
         .string { color: #D97706; }
 
         /* Grid */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px; }
 
         .card {
-            background: white; padding: 32px; border-radius: 12px;
+            background: white; padding: 40px; border-radius: 16px;
             border: 1px solid var(--border); transition: border-color 0.2s;
+            height: 100%;
         }
         .card:hover { border-color: var(--accent); }
         .card h3 { color: var(--text-primary); font-size: 1.25rem; margin-top: 12px; }
         
+        /* Highlighted Card Style */
+        .card-highlight {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.15), 0 10px 10px -5px rgba(15, 118, 110, 0.1);
+        }
+        .card-highlight h3 { color: white; opacity: 0.9; margin-top: 0; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;}
+        .card-highlight p { color: rgba(255,255,255,0.9); font-size: 1.1rem; }
+        .card-highlight .big-text { font-size: 2rem; font-weight: 800; line-height: 1.2; margin: 16px 0 24px 0; color: white; }
+
         .badge-mono {
             font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
             background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary); text-transform: uppercase;
@@ -200,29 +215,35 @@
         <!-- The Investor "Hook" Section -->
         <section id="story">
             <div class="grid">
+                <!-- Left: The Problem -->
                 <div>
                     <span class="badge-mono" style="color: #DC2626; background: #FEE2E2;">The Risk</span>
                     <h2>A "probably right" answer is a regulatory liability.</h2>
                     <p>
                         Current AI tools act like search engines—they give you an answer based on hidden embeddings. In drug discovery, this is a dead end.
                     </p>
-                    <p>
+                    <p style="margin-bottom: 0;">
                         You cannot put a neural network's intuition into an IND filing or a clinical protocol. You need <strong>biological mechanism</strong> and <strong>auditable logic</strong>.
                     </p>
                 </div>
+
+                <!-- Right: The Solution (HIGHLIGHTED) -->
                 <div>
-                    <div class="card">
+                    <div class="card card-highlight">
                         <h3>The Rete Difference</h3>
-                        <p style="font-size: 0.95rem; margin-top: 16px;">
-                            We don't replace the scientist. We arm them. <br><br>
-                            Instead of giving you a black-box label, Rete generates the <strong>executable code</strong> that proves <strong>why</strong> a result is valid. It converts "AI Hallucination" into "Reproducible Science."
+                        <div class="big-text">We don't replace the scientist. We arm them.</div>
+                        <p style="margin-bottom: 24px;">
+                            Instead of giving you a black-box label, Rete generates the <strong>executable code</strong> that proves <strong>why</strong> a result is valid.
+                        </p>
+                        <p style="font-size: 1rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px;">
+                            We convert "AI Hallucination" into <br><strong>Reproducible Science</strong>.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Infrastructure Section (Restored SaaS) -->
+        <!-- Infrastructure Section -->
         <section id="how-it-works" style="background-color: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container" style="text-align: center;">
                 <span class="badge-mono">Flexible Deployment</span>
@@ -232,7 +253,6 @@
                 </p>
 
                 <div class="grid-3" style="text-align: left;">
-                    <!-- Option 1: Managed SaaS -->
                     <div class="card">
                         <span class="badge-mono">Fastest Start</span>
                         <h3 style="margin-top: 12px;">Managed SaaS</h3>
@@ -240,8 +260,6 @@
                             Instant access to our secure, SOC 2 compliant cloud. Ideal for Biotech startups and non-IP datasets.
                         </p>
                     </div>
-
-                    <!-- Option 2: VPC -->
                     <div class="card" style="border-color: var(--accent); background-color: #FAFAFA;">
                         <span class="badge-mono" style="color: var(--accent); background: var(--accent-light);">Most Popular</span>
                         <h3 style="color: var(--accent);">Private Cloud</h3>
@@ -249,8 +267,6 @@
                             We deploy Rete's containerized agents directly into your AWS/GCP/Azure VPC. Data never egresses.
                         </p>
                     </div>
-
-                    <!-- Option 3: On-Prem -->
                     <div class="card">
                         <span class="badge-mono">Max Security</span>
                         <h3 style="margin-top: 12px;">Air-Gapped</h3>
