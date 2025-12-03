@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rete.bio | The Verifiable Analyst for Life Sciences</title>
-    <meta name="description" content="Rete.bio is the Glass Box AI for Life Sciences. Verifiable, executable analysis deployed securely on your Private Cloud, On-Premise, or SaaS.">
+    <title>Rete.bio | The Glass Box for Drug Discovery</title>
+    <meta name="description" content="Rete.bio is the Glass Box AI for Biotech. We replace black-box hallucinations with audit-ready, executable code for target identification.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,12 @@
 
     <style>
         :root {
-            /* Palette: Clinical, Trustworthy, Modern */
-            --bg-color: #F8FAFC; /* Slate 50 */
-            --text-primary: #0F172A; /* Slate 900 */
-            --text-secondary: #475569; /* Slate 600 */
-            --accent: #0F766E; /* Teal 700 - Represents Biology */
-            --accent-light: #CCFBF1; /* Teal 100 */
-            --code-bg: #FFFFFF;
+            /* Palette: Scientific, Clean, "Investable" */
+            --bg-color: #F8FAFC; 
+            --text-primary: #0F172A; 
+            --text-secondary: #475569; 
+            --accent: #0F766E; /* Teal 700 */
+            --accent-light: #CCFBF1; 
             --border: #E2E8F0;
         }
 
@@ -36,32 +35,17 @@
             min-height: 100vh;
         }
 
-        /* --- Layout --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-        }
-
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; width: 100%; }
         section { padding: 80px 0; }
 
-        /* --- Typography --- */
         h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
         h1 { font-size: 3.5rem; margin-bottom: 24px; }
         h2 { font-size: 2.5rem; margin-bottom: 16px; }
         h3 { font-size: 1.25rem; margin-bottom: 12px; }
         
-        p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            max-width: 700px;
-        }
-
-        .highlight { color: var(--accent); position: relative; display: inline-block; }
+        p { font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 24px; max-width: 700px; }
         
-        /* --- Navigation --- */
+        /* Navigation */
         nav { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.25rem; color: var(--text-primary); letter-spacing: -0.05em; }
         .logo span { color: var(--accent); }
@@ -72,24 +56,28 @@
             transition: transform 0.2s;
         }
         .btn:hover { transform: translateY(-2px); background-color: var(--accent); }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-primary); margin-left: 10px; }
+        .btn-outline:hover { border-color: var(--text-primary); transform: translateY(-2px); background: transparent; }
 
-        /* --- Hero --- */
-        .hero { padding-top: 100px; padding-bottom: 60px; }
+        /* Hero */
+        .hero { padding-top: 80px; padding-bottom: 60px; }
         .tagline {
             font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-transform: uppercase;
             color: var(--accent); background: var(--accent-light); padding: 6px 12px;
             border-radius: 4px; display: inline-block; margin-bottom: 24px;
         }
 
-        /* --- The "Glass Box" Visual --- */
+        /* Glass Box Visual */
         .glass-box-container {
             margin-top: 60px; background: white; border: 1px solid var(--border);
             border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
             overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid var(--accent);
         }
-        .window-header { background: #F1F5F9; padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid var(--border); }
+        .window-header { background: #F1F5F9; padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid var(--border); justify-content: space-between; align-items: center; }
+        .window-controls { display: flex; gap: 8px; }
         .dot { width: 10px; height: 10px; border-radius: 50%; background: #CBD5E1; }
         .dot.red { background: #FDA4AF; } .dot.yellow { background: #FDBA74; } .dot.green { background: #86EFAC; }
+        .status-badge { font-family: 'JetBrains Mono'; font-size: 0.7rem; background: #DCFCE7; color: #166534; padding: 2px 8px; border-radius: 4px; }
 
         .window-body { display: flex; flex-direction: row; min-height: 400px; }
         .chat-panel { width: 40%; padding: 30px; border-right: 1px solid var(--border); background: #FAFAFA; }
@@ -101,13 +89,15 @@
         }
         .chat-bubble.user { border-left: 3px solid var(--text-primary); }
         .chat-bubble.ai { border-left: 3px solid var(--accent); background: var(--accent-light); border-color: transparent;}
-        
-        .code-line { display: block; margin-bottom: 4px; }
-        .comment { color: #94A3B8; }
-        .keyword { color: #0F766E; font-weight: 600; }
-        .function { color: #2563EB; }
 
-        /* --- Grid & Cards --- */
+        /* Code Styling */
+        .code-line { display: block; margin-bottom: 6px; }
+        .comment { color: #94A3B8; font-style: italic; }
+        .keyword { color: #0F766E; font-weight: 700; }
+        .function { color: #2563EB; }
+        .string { color: #D97706; }
+
+        /* Grid */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px; }
 
@@ -116,24 +106,22 @@
             border: 1px solid var(--border); transition: border-color 0.2s;
         }
         .card:hover { border-color: var(--accent); }
-        .card h3 { color: var(--text-primary); font-size: 1.25rem; }
-        .card p { font-size: 0.95rem; margin-bottom: 0; }
-
+        .card h3 { color: var(--text-primary); font-size: 1.25rem; margin-top: 12px; }
+        
         .badge-mono {
             font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-            background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary);
+            background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary); text-transform: uppercase;
         }
 
-        /* --- Footer --- */
+        /* Footer */
         footer {
             margin-top: auto; border-top: 1px solid var(--border); padding: 60px 0;
             background-color: white; display: flex; flex-direction: column;
             align-items: center; justify-content: center; text-align: center;
         }
         footer .logo { font-size: 1.5rem; margin-bottom: 16px; }
-        footer p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; max-width: 100%; }
+        footer p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
 
-        /* Mobile */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .window-body { flex-direction: column; }
@@ -148,141 +136,148 @@
         <!-- Navigation -->
         <nav>
             <div class="logo">rete<span>.bio</span></div>
-            <a href="mailto:hello@rete.bio" class="btn">Request Demo</a>
+            <div>
+                <a href="mailto:admin@rete.bio" class="btn">Request Access</a>
+            </div>
         </nav>
 
         <!-- Hero Section -->
         <section class="hero">
-            <span class="tagline">From Black Box to Glass Box</span>
-            <h1>The verifiable analyst for <br><span class="highlight">Biotech & Life Sciences.</span></h1>
+            <span class="tagline">The "Glass Box" for Drug Discovery</span>
+            <h1>Stop hallucinating targets. <br><span class="highlight">Start validating them.</span></h1>
             <p>
-                Science doesn't trust AI that just "guesses." Rete is an agentic platform that translates biological questions into 
-                <strong>executed, auditable Python code</strong>. We generate the script, run it in your secure environment, and show you the results.
+                Rete is the first agentic analyst that generates <strong>audit-ready evidence</strong>. We translate biological intent into executable Python code—running securely on your infrastructure.
             </p>
+            <div style="margin-top: 32px;">
+                <a href="mailto:admin@rete.bio" class="btn">Join Alpha Program</a>
+                <a href="#how-it-works" class="btn btn-outline" style="text-decoration: none;">How it works</a>
+            </div>
 
-            <!-- Visual -->
+            <!-- The Glass Box Demo Visual -->
             <div class="glass-box-container">
                 <div class="window-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div style="margin-left: 10px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #64748B;">rete_analyst_session_01.py [Running on Private Cloud]</div>
+                    <div class="window-controls">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #64748B;">/private/cluster/rete_session_04.py</div>
+                    <div class="status-badge">● SECURE VPC CONNECTION</div>
                 </div>
                 <div class="window-body">
+                    <!-- Left: The Conversation -->
                     <div class="chat-panel">
                         <div class="chat-bubble user">
-                            <strong>User:</strong> Identify the target population for Anti-TIGIT therapy in this sample.
+                            <strong>User:</strong> This patient is non-responsive to Anti-PD1. Identify a secondary checkpoint target in the tumor stroma.
                         </div>
                         <div class="chat-bubble ai">
-                            <strong>Rete Agent:</strong> I will isolate T-cells co-expressing TIGIT and PD-1, then map their spatial proximity to tumor islands.
+                            <strong>Rete Agent:</strong> I will analyze the 10x Visium data to find ligand-receptor pairs active specifically at the tumor-stroma interface.
                             <br><br>
-                            <em>Executing code on secure worker...</em><br>
-                            <span style="font-size: 0.8rem; color: #0F766E;">✓ Result Generated</span>
+                            <em>1. Calculating spatial neighbors...</em><br>
+                            <em>2. Filtering for T-cell exhaustion markers...</em><br>
+                            <em>3. Validating against CellPhoneDB...</em>
                         </div>
                     </div>
+                    <!-- Right: The Code (The Truth) -->
                     <div class="code-panel">
-                        <span class="code-line comment"># 1. Filter for Exhausted T-cells</span>
-                        <span class="code-line"><span class="keyword">import</span> scanpy <span class="keyword">as</span> sc</span>
-                        <span class="code-line">exhausted = adata[(adata[: , 'TIGIT'].X > 0.5) & (adata[: , 'PDCD1'].X > 0.5)]</span>
+                        <span class="code-line comment"># 1. Isolate the "Battleground" (Tumor Boundary)</span>
+                        <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
+                        <span class="code-line">sq.gr.spatial_neighbors(adata)</span>
                         <br>
-                        <span class="code-line comment"># 2. Map to Tumor Boundary</span>
-                        <span class="code-line">boundary_cells = <span class="function">find_spatial_neighbors</span>(exhausted, tumor_clusters)</span>
+                        <span class="code-line comment"># 2. Test for Alternate Checkpoints (TIGIT, LAG3, TIM3)</span>
+                        <span class="code-line">results = <span class="function">analyze_interactions</span>(</span>
+                        <span class="code-line">    source=<span class="string">'Tumor_Core'</span>, </span>
+                        <span class="code-line">    target=<span class="string">'Stroma_Tcells'</span>, </span>
+                        <span class="code-line">    genes=[<span class="string">'PVR'</span>, <span class="string">'TIGIT'</span>]</span>
+                        <span class="code-line">)</span>
                         <br>
-                        <span class="code-line comment"># 3. Output Statistics</span>
-                        <span class="code-line"><span class="keyword">print</span>(f"Targetable Population: {len(boundary_cells)} cells")</span>
-                        <span class="code-line">>> Targetable Population: 3,402 cells (12% of total)</span>
+                        <span class="code-line comment"># 3. Output Evidence</span>
+                        <span class="code-line"><span class="keyword">if</span> results.p_value < 0.05:</span>
+                        <span class="code-line">    <span class="keyword">print</span>(f"Target Identified: PVR-TIGIT Axis (Confidence: 98%)")</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- The Problem Section -->
+        <!-- The Investor "Hook" Section -->
         <section id="story">
             <div class="grid">
                 <div>
-                    <h2>The Problem: <br>Trust vs. Speed</h2>
+                    <span class="badge-mono" style="color: #DC2626; background: #FEE2E2;">The Risk</span>
+                    <h2>A "probably right" target is a billion-dollar mistake.</h2>
                     <p>
-                        Generative AI is transforming R&D, but standard code-assistants are not enough. They can write syntax, but they cannot <strong>execute</strong> on complex biological data securely.
+                        Current AI tools act like search engines—they give you an answer based on hidden embeddings. In drug discovery, this is a liability.
                     </p>
                     <p>
-                        In rigorous workflows—from target identification to mechanism of action studies—you need an engine that can hold data in memory, run the math, and return reproducible evidence without exposing IP.
+                        You cannot put a neural network's intuition into an IND filing. You need <strong>biological mechanism</strong> and <strong>statistical proof</strong>.
                     </p>
                 </div>
                 <div>
                     <div class="card">
-                        <h3>The "Black Box" Era</h3>
-                        <p style="font-size: 0.95rem; margin-bottom: 0;">
-                            ❌ Data leaves your VPC.<br>
-                            ❌ "Trust the model."<br>
-                            ❌ No execution environment.<br>
-                            ❌ Reproducibility is impossible.
+                        <h3>The Rete Difference</h3>
+                        <p style="font-size: 0.95rem; margin-top: 16px;">
+                            We don't replace the scientist. We arm them. <br><br>
+                            Instead of giving you a black-box label, Rete writes the Python script that proves <strong>why</strong> a target is valid. It converts "AI Hallucination" into "Reproducible Science."
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- The Solution Section -->
-        <section>
-            <div class="grid">
-                <div>
-                    <div class="card" style="border-color: var(--accent);">
-                        <h3 style="color: var(--accent);">The Rete "Glass Box"</h3>
-                        <p style="font-size: 0.95rem; margin-bottom: 0;">
-                            ✅ Code Generation & Execution.<br>
-                            ✅ Full Data Sovereignty.<br>
-                            ✅ Full Audit Trail.<br>
-                            ✅ Multi-modal (Spatial + Omics).
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <h2>The Solution: <br>Logic, not just Language.</h2>
-                    <p>
-                        Rete is not a search engine. It is a <strong>Computational Partner</strong>.
-                    </p>
-                    <p>
-                        We use advanced agentic orchestration to write and execute custom analysis pipelines. Rete spins up a secure sandbox, runs heavy biological libraries (Scanpy, Squidpy), and proves the result.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Infrastructure & Security Section (New) -->
-        <section style="background-color: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <!-- Infrastructure Section (The Enterprise Moat) -->
+        <section id="how-it-works" style="background-color: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container" style="text-align: center;">
-                <h2>Deployed where your data lives.</h2>
+                <span class="badge-mono">Data Sovereignty</span>
+                <h2 style="margin-top: 16px;">We bring the brain to your data.</h2>
                 <p style="margin: 0 auto; margin-bottom: 40px;">
-                    We bring the compute to the data. Whether you are a fast-moving Biotech or a regulated Pharma, Rete runs on your infrastructure.
+                    Pharma data cannot leave the firewall. Rete's containerized agents deploy directly onto your infrastructure.
                 </p>
 
                 <div class="grid-3" style="text-align: left;">
                     <!-- Option 1 -->
                     <div class="card">
-                        <span class="badge-mono">Fastest</span>
-                        <h3 style="margin-top: 12px;">Managed SaaS</h3>
+                        <span class="badge-mono">Private Cloud</span>
+                        <h3>VPC Deployment</h3>
                         <p style="color: var(--text-secondary); margin-top: 8px;">
-                            Ideal for non-sensitive data and pilots. Get instant access to our secure cloud cluster.
+                            Deploy Rete as a Docker container inside your AWS/GCP/Azure VPC. Data never egresses.
                         </p>
-                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">✅ SOC 2 Compliant</p>
                     </div>
 
                     <!-- Option 2 -->
                     <div class="card" style="border-color: var(--accent); background-color: #FAFAFA;">
-                        <span class="badge-mono">Most Popular</span>
-                        <h3 style="margin-top: 12px; color: var(--accent);">Private Cloud (VPC)</h3>
+                        <span class="badge-mono" style="color: var(--accent); background: var(--accent-light);">On-Premise</span>
+                        <h3 style="color: var(--accent);">Air-Gapped</h3>
                         <p style="color: var(--text-secondary); margin-top: 8px;">
-                            We deploy Rete's containerized agents directly into your AWS, GCP, or Azure VPC.
+                            For highly sensitive assets. Run Rete offline on local Kubernetes clusters with zero external connectivity.
                         </p>
-                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600; color: var(--accent);">✅ Data never leaves your cloud</p>
                     </div>
 
                     <!-- Option 3 -->
                     <div class="card">
-                        <span class="badge-mono">Max Security</span>
-                        <h3 style="margin-top: 12px;">Air-Gapped On-Prem</h3>
+                        <span class="badge-mono">Integrations</span>
+                        <h3>Workflow Native</h3>
                         <p style="color: var(--text-secondary); margin-top: 8px;">
-                            For strictly regulated environments. Run fully offline on your internal Kubernetes cluster.
+                            Connects natively to your S3 buckets, Databricks Lakehouse, and internal ELNs.
                         </p>
-                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">✅ Zero external connectivity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases / Traction Signal -->
+        <section>
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 40px;">Built for high-value modalities.</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Spatial Transcriptomics</h3>
+                        <p style="margin-top: 12px;">
+                            Deconvolute the tumor microenvironment. Rete automates complex ligand-receptor analysis on 10x Visium and Xenium data.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Single-Cell Omics</h3>
+                        <p style="margin-top: 12px;">
+                            From QC to trajectory inference. Automate the 80% of routine scripting so your team can focus on the 20% of novel biology.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -290,18 +285,18 @@
 
         <!-- CTA Section -->
         <section style="text-align: center; padding: 100px 0;">
-            <h2>Ready to trace the logic?</h2>
+            <h2>Validate your targets.<br> Verify your AI.</h2>
             <p style="margin: 0 auto 32px auto;">
-                We are currently deploying pilots with select Biotech and Life Sciences partners.
+                Now accepting select partners for the Q1 2026 Alpha Program.
             </p>
-            <a href="mailto:hello@rete.bio" class="btn">Get Early Access</a>
+            <a href="mailto:admin@rete.bio" class="btn">Request Pilot Access</a>
         </section>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="logo">rete<span>.bio</span></div>
-        <p>&copy; 2025 Rete Bio.</p>
+        <p>&copy; 2025 Rete Bio. <span style="color: #CBD5E1;">|</span> Secure Agentic Infrastructure.</p>
     </footer>
 
 </body>
