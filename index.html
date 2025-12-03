@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rete.bio | The Verifiable Analyst for Life Sciences</title>
-    <meta name="description" content="Rete.bio is the Glass Box AI for Life Sciences. We don't just write code—we execute it. Verifiable, sandboxed analysis for Omics and Spatial biology.">
+    <meta name="description" content="Rete.bio is the Glass Box AI for Life Sciences. Verifiable, executable analysis deployed securely on your Private Cloud, On-Premise, or SaaS.">
     
-    <!-- Google Fonts: Inter for that clean Startup look -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,11 +23,7 @@
             --border: #E2E8F0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -40,7 +36,7 @@
             min-height: 100vh;
         }
 
-        /* --- Layout Utilities --- */
+        /* --- Layout --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -48,20 +44,13 @@
             width: 100%;
         }
 
-        section {
-            padding: 80px 0;
-        }
+        section { padding: 80px 0; }
 
         /* --- Typography --- */
-        h1, h2, h3 {
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
         h1 { font-size: 3.5rem; margin-bottom: 24px; }
         h2 { font-size: 2.5rem; margin-bottom: 16px; }
-        h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        h3 { font-size: 1.25rem; margin-bottom: 12px; }
         
         p {
             font-size: 1.125rem;
@@ -70,179 +59,86 @@
             max-width: 700px;
         }
 
-        .highlight {
-            color: var(--accent);
-            position: relative;
-            display: inline-block;
-        }
+        .highlight { color: var(--accent); position: relative; display: inline-block; }
         
         /* --- Navigation --- */
-        nav {
-            padding: 24px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            letter-spacing: -0.05em;
-        }
-
+        nav { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.25rem; color: var(--text-primary); letter-spacing: -0.05em; }
         .logo span { color: var(--accent); }
 
         .btn {
-            display: inline-block;
-            background-color: var(--text-primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
+            display: inline-block; background-color: var(--text-primary); color: white;
+            padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;
             transition: transform 0.2s;
         }
+        .btn:hover { transform: translateY(-2px); background-color: var(--accent); }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            background-color: var(--accent);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding-top: 100px;
-            padding-bottom: 60px;
-        }
-
+        /* --- Hero --- */
+        .hero { padding-top: 100px; padding-bottom: 60px; }
         .tagline {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            color: var(--accent);
-            background: var(--accent-light);
-            padding: 6px 12px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 24px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-transform: uppercase;
+            color: var(--accent); background: var(--accent-light); padding: 6px 12px;
+            border-radius: 4px; display: inline-block; margin-bottom: 24px;
         }
 
         /* --- The "Glass Box" Visual --- */
         .glass-box-container {
-            margin-top: 60px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border-top: 4px solid var(--accent);
+            margin-top: 60px; background: white; border: 1px solid var(--border);
+            border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+            overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid var(--accent);
         }
-
-        .window-header {
-            background: #F1F5F9;
-            padding: 12px 20px;
-            display: flex;
-            gap: 8px;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .window-header { background: #F1F5F9; padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid var(--border); }
         .dot { width: 10px; height: 10px; border-radius: 50%; background: #CBD5E1; }
-        .dot.red { background: #FDA4AF; }
-        .dot.yellow { background: #FDBA74; }
-        .dot.green { background: #86EFAC; }
+        .dot.red { background: #FDA4AF; } .dot.yellow { background: #FDBA74; } .dot.green { background: #86EFAC; }
 
-        .window-body {
-            display: flex;
-            flex-direction: row;
-            min-height: 400px;
-        }
-
-        .chat-panel {
-            width: 40%;
-            padding: 30px;
-            border-right: 1px solid var(--border);
-            background: #FAFAFA;
-        }
-
-        .code-panel {
-            width: 60%;
-            padding: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #334155;
-            background: #FFFFFF;
-        }
+        .window-body { display: flex; flex-direction: row; min-height: 400px; }
+        .chat-panel { width: 40%; padding: 30px; border-right: 1px solid var(--border); background: #FAFAFA; }
+        .code-panel { width: 60%; padding: 30px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #334155; background: #FFFFFF; }
 
         .chat-bubble {
-            background: white;
-            padding: 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 16px;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            background: white; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
+            margin-bottom: 16px; font-size: 0.95rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-
         .chat-bubble.user { border-left: 3px solid var(--text-primary); }
         .chat-bubble.ai { border-left: 3px solid var(--accent); background: var(--accent-light); border-color: transparent;}
-
+        
         .code-line { display: block; margin-bottom: 4px; }
         .comment { color: #94A3B8; }
         .keyword { color: #0F766E; font-weight: 600; }
         .function { color: #2563EB; }
 
-        /* --- Features --- */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
+        /* --- Grid & Cards --- */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 40px; }
 
         .card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: border-color 0.2s;
+            background: white; padding: 32px; border-radius: 12px;
+            border: 1px solid var(--border); transition: border-color 0.2s;
         }
-        
         .card:hover { border-color: var(--accent); }
+        .card h3 { color: var(--text-primary); font-size: 1.25rem; }
+        .card p { font-size: 0.95rem; margin-bottom: 0; }
 
-        /* --- Footer (Fixed) --- */
+        .badge-mono {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary);
+        }
+
+        /* --- Footer --- */
         footer {
-            margin-top: auto; 
-            border-top: 1px solid var(--border);
-            padding: 60px 0;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            margin-top: auto; border-top: 1px solid var(--border); padding: 60px 0;
+            background-color: white; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
         }
+        footer .logo { font-size: 1.5rem; margin-bottom: 16px; }
+        footer p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; max-width: 100%; }
 
-        footer .logo {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-        }
-
-        footer p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin: 0;
-            max-width: 100%;
-        }
-
-        /* Mobile Adjustments */
+        /* Mobile */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .window-body { flex-direction: column; }
             .chat-panel, .code-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border);}
-            .grid { grid-template-columns: 1fr; }
+            .grid, .grid-3 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -261,42 +157,38 @@
             <h1>The verifiable analyst for <br><span class="highlight">Biotech & Life Sciences.</span></h1>
             <p>
                 Science doesn't trust AI that just "guesses." Rete is an agentic platform that translates biological questions into 
-                <strong>executed, auditable Python code</strong>. We don't just generate the script—we run it securely and show you the results.
+                <strong>executed, auditable Python code</strong>. We generate the script, run it in your secure environment, and show you the results.
             </p>
 
-            <!-- The Glass Box Demo Visual -->
+            <!-- Visual -->
             <div class="glass-box-container">
                 <div class="window-header">
                     <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <div style="margin-left: 10px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #64748B;">rete_analyst_session_01.py</div>
+                    <div style="margin-left: 10px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #64748B;">rete_analyst_session_01.py [Running on Private Cloud]</div>
                 </div>
                 <div class="window-body">
-                    <!-- Left: The Conversation -->
                     <div class="chat-panel">
                         <div class="chat-bubble user">
-                            <strong>User:</strong> Analyze the tissue architecture and identify cell-cell interactions at the stroma boundary.
+                            <strong>User:</strong> Identify the target population for Anti-TIGIT therapy in this sample.
                         </div>
                         <div class="chat-bubble ai">
-                            <strong>Rete Agent:</strong> I will segment the morphological regions, calculate the spatial neighborhood graph, and test for ligand-receptor enrichment at the interface.
+                            <strong>Rete Agent:</strong> I will isolate T-cells co-expressing TIGIT and PD-1, then map their spatial proximity to tumor islands.
                             <br><br>
-                            <em>Executing code in sandbox...</em><br>
-                            <span style="font-size: 0.8rem; color: #0F766E;">✓ Analysis Complete</span>
+                            <em>Executing code on secure worker...</em><br>
+                            <span style="font-size: 0.8rem; color: #0F766E;">✓ Result Generated</span>
                         </div>
                     </div>
-                    <!-- Right: The Code (The Truth) -->
                     <div class="code-panel">
-                        <span class="code-line comment"># 1. Calculate spatial neighbors in the tissue</span>
-                        <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
-                        <span class="code-line"><span class="function">sq.gr.spatial_neighbors</span>(adata)</span>
+                        <span class="code-line comment"># 1. Filter for Exhausted T-cells</span>
+                        <span class="code-line"><span class="keyword">import</span> scanpy <span class="keyword">as</span> sc</span>
+                        <span class="code-line">exhausted = adata[(adata[: , 'TIGIT'].X > 0.5) & (adata[: , 'PDCD1'].X > 0.5)]</span>
                         <br>
-                        <span class="code-line comment"># 2. Filter for Boundary Regions</span>
-                        <span class="code-line">boundary = adata.obs[<span class="function">is_stroma</span> & <span class="function">is_tumor</span>]</span>
+                        <span class="code-line comment"># 2. Map to Tumor Boundary</span>
+                        <span class="code-line">boundary_cells = <span class="function">find_spatial_neighbors</span>(exhausted, tumor_clusters)</span>
                         <br>
-                        <span class="code-line comment"># 3. Test for Signaling Interactions</span>
-                        <span class="code-line">score = <span class="function">calculate_interaction</span>(boundary, 'CXCL12', 'CXCR4')</span>
-                        <br>
-                        <span class="code-line"><span class="keyword">print</span>(f"Interaction Score: {score}")</span>
-                        <span class="code-line">>> Interaction Score: 0.94 (Significant)</span>
+                        <span class="code-line comment"># 3. Output Statistics</span>
+                        <span class="code-line"><span class="keyword">print</span>(f"Targetable Population: {len(boundary_cells)} cells")</span>
+                        <span class="code-line">>> Targetable Population: 3,402 cells (12% of total)</span>
                     </div>
                 </div>
             </div>
@@ -311,14 +203,14 @@
                         Generative AI is transforming R&D, but standard code-assistants are not enough. They can write syntax, but they cannot <strong>execute</strong> on complex biological data securely.
                     </p>
                     <p>
-                        In rigorous workflows—from target identification to mechanism of action studies—you need an engine that can hold data in memory, run the math, and return reproducible evidence.
+                        In rigorous workflows—from target identification to mechanism of action studies—you need an engine that can hold data in memory, run the math, and return reproducible evidence without exposing IP.
                     </p>
                 </div>
                 <div>
                     <div class="card">
                         <h3>The "Black Box" Era</h3>
                         <p style="font-size: 0.95rem; margin-bottom: 0;">
-                            ❌ Opaque embeddings.<br>
+                            ❌ Data leaves your VPC.<br>
                             ❌ "Trust the model."<br>
                             ❌ No execution environment.<br>
                             ❌ Reproducibility is impossible.
@@ -336,7 +228,7 @@
                         <h3 style="color: var(--accent);">The Rete "Glass Box"</h3>
                         <p style="font-size: 0.95rem; margin-bottom: 0;">
                             ✅ Code Generation & Execution.<br>
-                            ✅ Secure, Sandboxed Compute.<br>
+                            ✅ Full Data Sovereignty.<br>
                             ✅ Full Audit Trail.<br>
                             ✅ Multi-modal (Spatial + Omics).
                         </p>
@@ -348,8 +240,50 @@
                         Rete is not a search engine. It is a <strong>Computational Partner</strong>.
                     </p>
                     <p>
-                        We use advanced agentic orchestration to write and execute custom analysis pipelines on the fly. Rete spins up a secure sandbox, runs the heavy biological libraries (Scanpy, Squidpy), and proves the result with hard data.
+                        We use advanced agentic orchestration to write and execute custom analysis pipelines. Rete spins up a secure sandbox, runs heavy biological libraries (Scanpy, Squidpy), and proves the result.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infrastructure & Security Section (New) -->
+        <section style="background-color: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div class="container" style="text-align: center;">
+                <h2>Deployed where your data lives.</h2>
+                <p style="margin: 0 auto; margin-bottom: 40px;">
+                    We bring the compute to the data. Whether you are a fast-moving Biotech or a regulated Pharma, Rete runs on your infrastructure.
+                </p>
+
+                <div class="grid-3" style="text-align: left;">
+                    <!-- Option 1 -->
+                    <div class="card">
+                        <span class="badge-mono">Fastest</span>
+                        <h3 style="margin-top: 12px;">Managed SaaS</h3>
+                        <p style="color: var(--text-secondary); margin-top: 8px;">
+                            Ideal for non-sensitive data and pilots. Get instant access to our secure cloud cluster.
+                        </p>
+                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">✅ SOC 2 Compliant</p>
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div class="card" style="border-color: var(--accent); background-color: #FAFAFA;">
+                        <span class="badge-mono">Most Popular</span>
+                        <h3 style="margin-top: 12px; color: var(--accent);">Private Cloud (VPC)</h3>
+                        <p style="color: var(--text-secondary); margin-top: 8px;">
+                            We deploy Rete's containerized agents directly into your AWS, GCP, or Azure VPC.
+                        </p>
+                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600; color: var(--accent);">✅ Data never leaves your cloud</p>
+                    </div>
+
+                    <!-- Option 3 -->
+                    <div class="card">
+                        <span class="badge-mono">Max Security</span>
+                        <h3 style="margin-top: 12px;">Air-Gapped On-Prem</h3>
+                        <p style="color: var(--text-secondary); margin-top: 8px;">
+                            For strictly regulated environments. Run fully offline on your internal Kubernetes cluster.
+                        </p>
+                        <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">✅ Zero external connectivity</p>
+                    </div>
                 </div>
             </div>
         </section>
