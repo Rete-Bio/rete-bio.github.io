@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rete.bio | The Verifiable Analyst</title>
-    <meta name="description" content="Rete.bio is the Glass Box AI for drug discovery. We replace black-box hallucinations with verifiable, executable Python code.">
+    <title>Rete.bio | The Verifiable Analyst for Life Sciences</title>
+    <meta name="description" content="Rete.bio is the Glass Box AI for Biotech and Life Sciences. We replace black-box hallucinations with verifiable, executable Python code for Omics and Spatial analysis.">
     
     <!-- Google Fonts: Inter for that clean Startup look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,7 +214,7 @@
 
         /* --- Footer (Fixed) --- */
         footer {
-            margin-top: auto; /* Pushes footer to bottom */
+            margin-top: auto; 
             border-top: 1px solid var(--border);
             padding: 60px 0;
             background-color: white;
@@ -234,7 +234,7 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             margin: 0;
-            max-width: 100%; /* Overrides global max-width to allow centering */
+            max-width: 100%;
         }
 
         /* Mobile Adjustments */
@@ -258,10 +258,10 @@
         <!-- Hero Section -->
         <section class="hero">
             <span class="tagline">From Black Box to Glass Box</span>
-            <h1>The verifiable analyst for <br><span class="highlight">Precision Drug Discovery.</span></h1>
+            <h1>The verifiable analyst for <br><span class="highlight">Biotech & Life Sciences.</span></h1>
             <p>
-                Pharma doesn't trust AI that guesses. Rete is an agentic platform that translates biological questions into 
-                <strong>executable, auditable Python code</strong>. We find the causal mechanism, and we show our work.
+                Science doesn't trust AI that guesses. Rete is an agentic platform that translates biological questions into 
+                <strong>executable, auditable Python code</strong>. Whether in Drug Discovery, Spatial Biology, or Basic Research—we show our work.
             </p>
 
             <!-- The Glass Box Demo Visual -->
@@ -274,10 +274,10 @@
                     <!-- Left: The Conversation -->
                     <div class="chat-panel">
                         <div class="chat-bubble user">
-                            <strong>User:</strong> Find a ligand-receptor pair at the tumor boundary causing T-cell exhaustion.
+                            <strong>User:</strong> Analyze the tissue architecture and identify cell-cell interactions at the stroma boundary.
                         </div>
                         <div class="chat-bubble ai">
-                            <strong>Rete Agent:</strong> I will segment the tumor stroma, isolate the interface, and compute spatial neighbors for potential inhibitory ligands.
+                            <strong>Rete Agent:</strong> I will segment the morphological regions, calculate the spatial neighborhood graph, and test for ligand-receptor enrichment at the interface.
                             <br><br>
                             <em>Executing analysis...</em>
                         </div>
@@ -288,11 +288,11 @@
                         <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
                         <span class="code-line"><span class="function">sq.gr.spatial_neighbors</span>(adata)</span>
                         <br>
-                        <span class="code-line comment"># 2. Filter for Tumor-Stroma Interface</span>
-                        <span class="code-line">interface = adata.obs[<span class="function">neighbors_tumor</span> & <span class="function">neighbors_tcell</span>]</span>
+                        <span class="code-line comment"># 2. Filter for Boundary Regions</span>
+                        <span class="code-line">boundary = adata.obs[<span class="function">is_stroma</span> & <span class="function">is_tumor</span>]</span>
                         <br>
-                        <span class="code-line comment"># 3. Test for PVR (Ligand) and TIGIT (Receptor)</span>
-                        <span class="code-line">score = <span class="function">calculate_interaction</span>(interface, 'PVR', 'TIGIT')</span>
+                        <span class="code-line comment"># 3. Test for Signaling Interactions</span>
+                        <span class="code-line">score = <span class="function">calculate_interaction</span>(boundary, 'CXCL12', 'CXCR4')</span>
                         <br>
                         <span class="code-line"><span class="keyword">print</span>(f"Interaction Score: {score}")</span>
                         <span class="code-line">>> Interaction Score: 0.94 (Significant)</span>
@@ -307,10 +307,10 @@
                 <div>
                     <h2>The Problem: <br>Trust vs. Speed</h2>
                     <p>
-                        Generative AI is transforming biotech, but LLMs suffer from a critical fatal flaw: <strong>Hallucination</strong>.
+                        Generative AI is transforming R&D, but LLMs suffer from a critical fatal flaw: <strong>Hallucination</strong>.
                     </p>
                     <p>
-                        In target identification, a "probably right" answer is dangerous. You cannot put a neural network's intuition into a Phase I clinical trial. You need biological evidence.
+                        In rigorous scientific workflows—from target identification to mechanism of action studies—a "probably right" answer is dangerous. You need reproducible evidence, not just intuition.
                     </p>
                 </div>
                 <div>
@@ -320,7 +320,7 @@
                             ❌ Opaque embeddings.<br>
                             ❌ "Trust the model."<br>
                             ❌ No audit trail.<br>
-                            ❌ N=1 validation is impossible.
+                            ❌ Reproducibility is impossible.
                         </p>
                     </div>
                 </div>
@@ -347,7 +347,7 @@
                         Rete is not a search engine. It is an <strong>Architect</strong>.
                     </p>
                     <p>
-                        We use advanced agentic workflows to write custom analysis pipelines on the fly. Whether it's 10x Visium spatial data or single-cell RNA-seq, Rete generates the code, runs the math, and proves the result.
+                        We use advanced agentic workflows (AG2) to write custom analysis pipelines on the fly. Whether analyzing 10x Visium spatial data or massive single-cell datasets, Rete generates the code, runs the math, and proves the result.
                     </p>
                 </div>
             </div>
@@ -357,16 +357,16 @@
         <section style="text-align: center; padding: 100px 0;">
             <h2>Ready to trace the logic?</h2>
             <p style="margin: 0 auto 32px auto;">
-                We are currently deploying pilots with select biotech partners.
+                We are currently deploying pilots with select Biotech and Pharma partners.
             </p>
             <a href="mailto:hello@rete.bio" class="btn">Get Early Access</a>
         </section>
     </div>
 
-    <!-- Footer Outside Container for Full Width Background -->
+    <!-- Footer -->
     <footer>
         <div class="logo">rete<span>.bio</span></div>
-        <p>&copy; 2025 Rete Bio.</p>
+        <p>&copy; 2025 Rete Bio. Built in Berlin.</p>
     </footer>
 
 </body>
