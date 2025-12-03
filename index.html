@@ -35,6 +35,9 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* --- Layout Utilities --- */
@@ -42,6 +45,7 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
+            width: 100%;
         }
 
         section {
@@ -208,14 +212,29 @@
         
         .card:hover { border-color: var(--accent); }
 
-        /* --- Footer --- */
+        /* --- Footer (Fixed) --- */
         footer {
-            margin-top: 100px;
+            margin-top: auto; /* Pushes footer to bottom */
             border-top: 1px solid var(--border);
-            padding: 40px 0;
+            padding: 60px 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        footer p {
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            margin: 0;
+            max-width: 100%; /* Overrides global max-width to allow centering */
         }
 
         /* Mobile Adjustments */
@@ -328,7 +347,7 @@
                         Rete is not a search engine. It is an <strong>Architect</strong>.
                     </p>
                     <p>
-                        We use advanced agentic workflows to write custom analysis pipelines on the fly. Whether it's 10x Visium spatial data or single-cell RNA-seq, Rete generates the code, runs the math, and proves the result.
+                        We use advanced agentic workflows (AG2) to write custom analysis pipelines on the fly. Whether it's 10x Visium spatial data or single-cell RNA-seq, Rete generates the code, runs the math, and proves the result.
                     </p>
                 </div>
             </div>
@@ -340,14 +359,15 @@
             <p style="margin: 0 auto 32px auto;">
                 We are currently deploying pilots with select biotech partners.
             </p>
-            <a href="mailto:admin@rete.bio" class="btn">Get Early Access</a>
+            <a href="mailto:hello@rete.bio" class="btn">Get Early Access</a>
         </section>
-
-        <footer>
-            <div class="logo" style="font-size: 1rem; margin-bottom: 12px;">rete<span>.bio</span></div>
-            <p style="font-size: 0.8rem;">&copy; 2025 Rete Bio.</p>
-        </footer>
     </div>
+
+    <!-- Footer Outside Container for Full Width Background -->
+    <footer>
+        <div class="logo">rete<span>.bio</span></div>
+        <p>&copy; 2025 Rete Bio.</p>
+    </footer>
 
 </body>
 </html>
