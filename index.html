@@ -137,56 +137,10 @@
             background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary); text-transform: uppercase;
         }
 
+        /* The "Example" Code Tag */
         .workflow-tag {
             font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
             color: #94A3B8; margin-bottom: 12px; display: block;
-        }
-
-        /* --- CONTACT FORM STYLES --- */
-        .form-container {
-            background: white;
-            padding: 48px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-group { margin-bottom: 20px; text-align: left; }
-        
-        label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.2s;
-            background-color: #FAFAFA;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--accent);
-            background-color: white;
-        }
-
-        textarea { resize: vertical; min-height: 120px; }
-
-        .form-btn {
-            width: 100%;
-            padding: 16px;
-            font-size: 1.1rem;
-            margin-top: 10px;
         }
 
         /* Footer */
@@ -203,7 +157,6 @@
             .window-body { flex-direction: column; }
             .chat-panel, .code-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border);}
             .grid, .grid-3 { grid-template-columns: 1fr; }
-            .form-container { padding: 24px; }
         }
     </style>
 </head>
@@ -223,8 +176,7 @@
                 Rete is the first agentic analyst that generates <strong>audit-ready evidence</strong>. We translate biological intent into executable code—running securely across your entire R&D pipeline.
             </p>
             <div style="margin-top: 32px;">
-                <!-- Link to Form Section -->
-                <a href="#contact" class="btn">Request Early Access</a>
+                <a href="mailto:admin@rete.bio" class="btn">Request Early Access</a>
                 <a href="#how-it-works" class="btn btn-outline" style="text-decoration: none;">How it works</a>
             </div>
 
@@ -241,32 +193,32 @@
                     <!-- Left: The Conversation -->
                     <div class="chat-panel">
                         <div class="chat-bubble user">
-                            <strong>User:</strong> This patient is non-responsive to Anti-PD1. Integrate H&E texture features with transcriptomics to find a secondary target.
+                            <strong>User:</strong> This patient is non-responsive to Anti-PD1. Integrate H&E histology with the spatial transcriptomics to find a secondary target.
                         </div>
                         <div class="chat-bubble ai">
-                            <strong>Rete Agent:</strong> I will extract "necrotic" regions from the H&E image, fuse this with the RNA layer, and test for ligand-receptor upregulation specifically at that boundary.
+                            <strong>Rete Agent:</strong> I will segment the tumor islands from the H&E image, overlay the RNA expression data, and identify ligand-receptor pairs active at the necrotic boundary.
                             <br><br>
-                            <em>1. Calculating Image Features (Texture)...</em><br>
-                            <em>2. Fusing Modalities (Image + RNA)...</em><br>
-                            <em>3. Testing PVR-TIGIT Interaction...</em>
+                            <em>1. Segmenting Tissue (Image)...</em><br>
+                            <em>2. Overlaying Expression (RNA)...</em><br>
+                            <em>3. Validating against CellPhoneDB...</em>
                         </div>
                     </div>
                     <!-- Right: The Code (The Truth) -->
                     <div class="code-panel">
-                        <span class="code-line comment"># 1. Multimodal Fusion: Extract Image Features</span>
+                        <span class="code-line comment"># 1. Multimodal Fusion (Image + RNA)</span>
                         <span class="code-line"><span class="keyword">import</span> squidpy <span class="keyword">as</span> sq</span>
+                        <span class="code-line"><span class="function">sq.im.segment</span>(img, layer=<span class="string">"image"</span>, method=<span class="string">"watershed"</span>)</span>
                         <span class="code-line"><span class="function">sq.im.calculate_image_features</span>(adata, img, features=<span class="string">"texture"</span>)</span>
                         <br>
-                        <span class="code-line comment"># 2. Run Interaction Test (Necrotic Region vs T-Cells)</span>
+                        <span class="code-line comment"># 2. Run Permutation Test (Ligand-Receptor)</span>
                         <span class="code-line">res = <span class="function">sq.gr.ligrec</span>(</span>
                         <span class="code-line">    adata,</span>
                         <span class="code-line">    n_perms=1000,</span>
-                        <span class="code-line">    cluster_key=<span class="string">"image_defined_regions"</span>,</span>
-                        <span class="code-line">    interactions=[<span class="string">'PVR'</span>, <span class="string">'TIGIT'</span>]</span>
+                        <span class="code-line">    cluster_key=<span class="string">"spatial_leiden"</span></span>
                         <span class="code-line">)</span>
                         <br>
-                        <span class="code-line comment"># 3. Output Significance</span>
-                        <span class="code-line">pval = res[<span class="string">'pvalues'</span>].loc[<span class="string">'Necrotic_Tumor'</span>, <span class="string">'Stroma'</span>][<span class="string">'PVR_TIGIT'</span>]</span>
+                        <span class="code-line comment"># 3. Filter for Significant PVR-TIGIT Interaction</span>
+                        <span class="code-line">pval = res[<span class="string">'pvalues'</span>].loc[<span class="string">'Tumor'</span>, <span class="string">'Stroma'</span>][<span class="string">'PVR_TIGIT'</span>]</span>
                         <span class="code-line"><span class="keyword">print</span>(f"P-Value: {pval:.5f}")</span>
                         <span class="code-line">>> P-Value: 0.00132 (Significant)</span>
                     </div>
@@ -379,58 +331,14 @@
             </div>
         </section>
 
-        <!-- Contact Form Section -->
+        <!-- CTA Section -->
         <section id="contact" style="text-align: center; padding: 100px 0; background-color: #F1F5F9;">
             <div class="container">
-                <h2>Join the Alpha Program</h2>
-                <p style="margin: 0 auto 40px auto;">
-                    We are currently onboarding select partners for Q1 2026. <br>Tell us about your infrastructure needs.
+                <h2>Validate your pipeline.<br> Verify your AI.</h2>
+                <p style="margin: 0 auto 32px auto;">
+                    Now accepting select partners for the Q1 2026 Alpha Program.
                 </p>
-                
-                <div class="form-container">
-                    <!-- 
-                         IMPORTANT: Replace 'YOUR_FORMSPREE_ID' below with the actual ID 
-                         you get from https://formspree.io/create 
-                    -->
-                    <form action="https://formspree.io/f/xvgzwdrl" method="POST">
-                        
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Dr. Jane Doe" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Work Email</label>
-                            <input type="email" id="email" name="email" placeholder="jane@biotech.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="organization">Organization</label>
-                            <input type="text" id="organization" name="organization" placeholder="Acme Therapeutics" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="role">Role</label>
-                            <select id="role" name="role">
-                                <option value="" disabled selected>Select your role...</option>
-                                <option value="Executive">C-Suite / Founder</option>
-                                <option value="CompBio">Head of Comp Bio</option>
-                                <option value="Scientist">Wet-Lab Scientist</option>
-                                <option value="Investor">Investor</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Infrastructure Preference</label>
-                            <textarea id="message" name="message" placeholder="Are you interested in SaaS, VPC, or On-Prem? What specific data modalities are you analyzing?" required></textarea>
-                        </div>
-
-                        <!-- Honeypot for spam protection -->
-                        <input type="text" name="_gotcha" style="display:none">
-
-                        <button type="submit" class="btn form-btn">Submit Application</button>
-                    </form>
-                </div>
+                <a href="mailto:admin@rete.bio" class="btn">Request Early Access</a>
             </div>
         </section>
     </div>
