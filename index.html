@@ -59,9 +59,7 @@
         .btn:hover { transform: translateY(-2px); background-color: var(--accent); }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-primary); margin-left: 10px; }
         .btn-outline:hover { border-color: var(--text-primary); transform: translateY(-2px); background: transparent; }
-        .btn-white { background-color: white; color: var(--accent); }
-        .btn-white:hover { background-color: var(--accent-light); color: var(--accent-dark); transform: translateY(-2px); }
-
+        
         /* Hero */
         .hero { padding-top: 80px; padding-bottom: 60px; }
         .tagline {
@@ -107,7 +105,7 @@
         .card {
             background: white; padding: 40px; border-radius: 16px;
             border: 1px solid var(--border); transition: border-color 0.2s;
-            height: 100%;
+            height: 100%; position: relative;
         }
         .card:hover { border-color: var(--accent); }
         .card h3 { color: var(--text-primary); font-size: 1.25rem; margin-top: 12px; }
@@ -115,8 +113,7 @@
         /* Highlighted Card Style */
         .card-highlight {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            color: white;
-            border: none;
+            color: white; border: none;
             box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.15), 0 10px 10px -5px rgba(15, 118, 110, 0.1);
         }
         .card-highlight h3 { color: white; opacity: 0.9; margin-top: 0; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;}
@@ -126,6 +123,12 @@
         .badge-mono {
             font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
             background: #E2E8F0; padding: 4px 8px; border-radius: 4px; color: var(--text-secondary); text-transform: uppercase;
+        }
+
+        /* The "Example" Code Tag */
+        .workflow-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            color: #94A3B8; margin-bottom: 12px; display: block;
         }
 
         /* Footer */
@@ -278,27 +281,39 @@
             </div>
         </section>
 
-        <!-- Use Cases -->
+        <!-- Use Cases (Example Workflows) -->
         <section>
             <div class="container">
-                <h2 style="text-align: center; margin-bottom: 40px;">A computational engine for the whole pipeline.</h2>
+                <h2 style="text-align: center; margin-bottom: 16px;">A computational engine for the whole pipeline.</h2>
+                <p style="text-align: center; margin: 0 auto 48px auto;">
+                    Rete is programmable for any modality. Here are three examples <br>of workflows our partners are automating today:
+                </p>
+                
                 <div class="grid-3">
+                    <!-- Example 1 -->
                     <div class="card">
+                        <span class="workflow-tag">// EXAMPLE_01: SPATIAL</span>
                         <h3>Target Discovery</h3>
                         <p style="margin-top: 12px; font-size: 0.9rem;">
-                            Deconvolute the tumor microenvironment. Automate complex ligand-receptor analysis on spatial data.
+                            Deconvolute the tumor microenvironment. Automate complex ligand-receptor analysis on 10x Visium data.
                         </p>
                     </div>
+                    
+                    <!-- Example 2 -->
                     <div class="card">
+                        <span class="workflow-tag">// EXAMPLE_02: SYSTEMS BIO</span>
                         <h3>Mechanism of Action</h3>
                         <p style="margin-top: 12px; font-size: 0.9rem;">
                             Validate how drugs perturb biological networks. Verify on-target vs. off-target effects with statistical rigor.
                         </p>
                     </div>
+                    
+                    <!-- Example 3 -->
                     <div class="card">
+                        <span class="workflow-tag">// EXAMPLE_03: CLINICAL</span>
                         <h3>Biomarker Stratification</h3>
                         <p style="margin-top: 12px; font-size: 0.9rem;">
-                            Analyze clinical cohorts to identify responder populations. Turn complex patient data into clear inclusion criteria.
+                            Analyze clinical cohorts to identify responder populations. Turn complex patient data into inclusion criteria.
                         </p>
                     </div>
                 </div>
