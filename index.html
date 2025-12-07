@@ -82,7 +82,16 @@
         /* Navigation */
         nav { padding: 20px 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.5); background: rgba(250, 250, 250, 0.8); }
         .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--text-main); letter-spacing: -0.05em; }
+        
+        /* Updated Logo Style - No Underline */
+        .logo { 
+            font-family: 'JetBrains Mono', monospace; 
+            font-weight: 700; 
+            font-size: 1.4rem; 
+            color: var(--text-main); 
+            letter-spacing: -0.05em; 
+            text-decoration: none; /* Removes underline */
+        }
         .logo span { color: var(--accent-primary); }
         
         .nav-links { display: flex; gap: 24px; align-items: center; }
