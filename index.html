@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rete.bio | The Execution Layer for Biological AI</title>
-    <meta name="description" content="Rete.bio is the neuro-symbolic runtime for Agentic Science. We turn biological intuition into verifiable, executable code.">
+    <meta name="description" content="Rete.bio is the runtime for Agentic Science. We turn biological intuition into verifiable, executable code.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +38,7 @@
             /* Status Indicators */
             --success: #10B981;
             --warning: #F59E0B;
+            --danger: #EF4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,6 +46,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
+            /* Subtle technical grid background */
             background-image: 
                 linear-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
@@ -75,7 +77,6 @@
         
         .mono { font-family: 'JetBrains Mono', monospace; }
         .highlight { color: var(--accent-primary); -webkit-text-fill-color: var(--accent-primary); }
-        .small-caps { text-transform: uppercase; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; }
 
         /* Navigation */
         nav { padding: 20px 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.5); background: rgba(250, 250, 250, 0.8); }
@@ -90,7 +91,7 @@
         .btn {
             font-size: 0.9rem; font-weight: 600; text-decoration: none; 
             padding: 10px 20px; border-radius: 8px; transition: all 0.2s;
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
         }
         .btn-primary { 
             background: var(--text-main); color: white; border: 1px solid var(--text-main); 
@@ -124,15 +125,20 @@
             overflow: hidden;
             position: relative;
         }
+        /* Glow Effect behind the code */
+        .runtime-visual::before {
+            content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 80%; background: var(--accent-primary); opacity: 0.15; filter: blur(100px); pointer-events: none;
+        }
         .window-bar {
             background: #1E293B; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #334155; position: relative; z-index: 2;
         }
         .window-actions { display: flex; gap: 8px; }
         .w-dot { width: 10px; height: 10px; border-radius: 50%; background: #475569; }
         .w-dot.close { background: #EF4444; } .w-dot.min { background: #F59E0B; } .w-dot.max { background: #10B981; }
         
-        .code-grid { display: grid; grid-template-columns: 1.6fr 1fr; min-height: 450px; }
+        .code-grid { display: grid; grid-template-columns: 1.6fr 1fr; min-height: 450px; position: relative; z-index: 2; }
         
         .editor-pane { padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #E2E8F0; border-right: 1px solid #1E293B; }
         .terminal-pane { background: #020617; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #94A3B8; }
@@ -143,16 +149,16 @@
         .s { color: #F472B6; } /* String */
         .c { color: #64748B; font-style: italic; } /* Comment */
         .v { color: #2DD4BF; } /* Variable */
-        .n { color: #F8FAFC; } /* Normal */
 
         /* Terminal Output */
         .t-line { display: block; margin-bottom: 6px; }
         .t-success { color: var(--success); }
         .t-warn { color: var(--warning); }
+        .t-danger { color: var(--danger); }
         .blink { animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Architecture Section (The "Deep Tech" Proof) */
+        /* Architecture Section (The "How It Works") */
         .architecture-grid {
             display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 40px;
             position: relative;
@@ -162,12 +168,14 @@
             position: relative; transition: all 0.2s;
         }
         .arch-card:hover { border-color: var(--accent-primary); box-shadow: 0 10px 20px -5px var(--accent-glow); }
-        .step-num { 
-            position: absolute; top: -12px; left: 24px; 
-            background: var(--text-main); color: white; 
-            font-family: 'JetBrains Mono'; font-size: 0.75rem; font-weight: 700;
-            padding: 4px 8px; border-radius: 4px;
+        .step-label {
+            display: inline-block; font-size: 0.7rem; font-weight: 700; 
+            padding: 4px 8px; border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 12px;
         }
+        .step-intuition { background: #EFF6FF; color: #2563EB; }
+        .step-logic { background: #0F172A; color: #FFF; }
+        .step-result { background: #DCFCE7; color: #166534; }
+
         .arrow-connector {
             position: absolute; top: 50%; right: -18px; 
             color: var(--border); font-size: 1.5rem; z-index: 10;
@@ -189,6 +197,12 @@
         .footer-links a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 8px; }
         .footer-links a:hover { color: var(--accent-primary); }
 
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .code-grid { grid-template-columns: 1fr; }
+            .terminal-pane { border-top: 1px solid #1E293B; }
+        }
+
     </style>
 </head>
 <body>
@@ -198,12 +212,7 @@
         <nav>
             <div class="nav-inner">
                 <a href="#" class="logo">rete<span>.bio</span></a>
-                <div class="nav-links" style="display: none;"> <!-- Hidden on mobile, visible via CSS if needed -->
-                    <a href="#architecture" class="nav-link">Architecture</a>
-                    <a href="#platform" class="nav-link">Platform</a>
-                    <a href="#security" class="nav-link">Security</a>
-                </div>
-                <div class="nav-actions">
+                <div class="nav-links">
                     <a href="mailto:admin@rete.bio" class="btn btn-primary">Request Access</a>
                 </div>
             </div>
@@ -213,19 +222,21 @@
         <section class="hero">
             <div class="hero-badge">
                 <div class="status-dot"></div>
-                <span class="mono">SYSTEM 2 REASONING ENGINE</span>
+                <span class="mono">NEURO-SYMBOLIC RUNTIME v1.0</span>
             </div>
             
-            <h1>Stop hallucinating science.<br>Start <span class="highlight">executing it.</span></h1>
+            <h1>Stop writing analysis.<br>Start <span class="highlight">executing it.</span></h1>
             
             <p>
-                Generative AI predicts plausible text. Rete constructs <strong>verifiable proofs</strong>.
-                We provide the Neuro-Symbolic runtime that turns biological intuition into executable code, running securely on your infrastructure.
+                Generative AI is transforming biology, but text is not enough. You can't execute a PDF.
+            </p>
+            <p>
+                Rete is the <strong>Runtime Environment</strong> for scientific discovery. We generate and <strong>execute</strong> verification code securely on your infrastructure to validate hypotheses in real-time.
             </p>
             
-            <div style="display: flex; gap: 16px; margin-top: 32px;">
+            <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
                 <a href="mailto:admin@rete.bio" class="btn btn-primary">Deploy the Runtime</a>
-                <a href="#how-it-works" class="btn btn-secondary">Read the Technical Paper</a>
+                <a href="#how-it-works" class="btn btn-secondary">See Architecture</a>
             </div>
 
             <!-- The Runtime Visual -->
@@ -244,7 +255,7 @@
     <span class="c"># 1. Connect to Client Data Lake (Read-Only)</span>
     data = rt.connect(<span class="s">"s3://pharma-internal/rnaseq"</span>)
     
-    <span class="c"># 2. Execute Logic Check (Not LLM Prediction)</span>
+    <span class="c"># 2. EXECUTE Logic Check (Not LLM Prediction)</span>
     <span class="v">risk_score</span> = tox.<span class="f">calc_cardio_risk</span>(
         data, 
         target=target_id, 
@@ -252,62 +263,66 @@
     )
     
     <span class="k">if</span> <span class="v">risk_score</span> > 0.8:
+        <span class="c"># Stop the workflow if logic fails</span>
         <span class="k">raise</span> rt.SafetyViolation(<span class="s">"High Toxicity"</span>)
         
-    <span class="k">return</span> rt.<span class="f">generate_proof</span>(target_id)
+    <span class="k">return</span> rt.<span class="f">trigger_wetlab</span>(target_id)
                     </div>
                     <div class="terminal-pane">
                         <span class="t-line">root@rete-engine:~# ./run_agent --verify</span>
                         <span class="t-line">>> <span class="t-success">CONNECTED</span> to Secure Enclave.</span>
                         <span class="t-line">>> FETCHING data for Target: KRAS_G12C...</span>
-                        <span class="t-line">>> RUNNING Logic Module: `tox.calc_cardio_risk`</span>
+                        <span class="t-line">>> EXECUTING Module: `tox.calc_cardio_risk`</span>
                         <br>
                         <span class="t-line">>> WARN: Detected off-target binding (Myocardium)</span>
                         <span class="t-line">>> REASONING: Pathway overlap > 94%</span>
-                        <span class="t-line">>> ACTION: <span class="t-warn">HALTING EXECUTION.</span> Validation Failed.</span>
+                        <span class="t-line">>> ACTION: <span class="t-danger">HALTING EXECUTION.</span> Validation Failed.</span>
                         <br>
-                        <span class="t-line">>> SYSTEM: Hallucination prevented.</span>
+                        <span class="t-line">>> SYSTEM: Hallucination prevented. Workflow Stopped.</span>
                         <span class="t-line blink">_</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Architecture (The Deep Tech Pitch) -->
+        <!-- Technical Architecture -->
         <section id="how-it-works">
             <h4 class="small-caps highlight">The Architecture</h4>
-            <h2>Neuro-Symbolic by Design.</h2>
+            <h2>The "Check Your Work" Engine.</h2>
             <p>
-                LLMs (System 1) are creative but unreliable. Rete adds a deterministic Reasoning Engine (System 2) to enforce biological constraints.
+                Generative AI is like a brilliant but reckless assistant. It needs a supervisor.
+                Rete couples the <strong>Creative Intuition</strong> of LLMs with a <strong>Logical Validator</strong> that enforces biological reality.
             </p>
 
             <div class="architecture-grid">
                 <!-- Step 1 -->
                 <div class="arch-card">
-                    <div class="step-num">01</div>
+                    <div class="step-label step-intuition">SYSTEM 1: INTUITION</div>
                     <h3>Generative Proposal</h3>
                     <p style="font-size: 0.95rem; margin-bottom: 0;">
-                        An LLM acts as the "creative search" engine, scanning literature and multimodal data to propose novel hypotheses or trial designs.
+                        The LLM scans millions of papers to propose a creative hypothesis (e.g., "Target Gene X for this disease"). 
+                        <br><em>Status: Unverified Guess.</em>
                     </p>
                     <div class="arrow-connector">&rarr;</div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="arch-card">
-                    <div class="step-num">02</div>
-                    <h3>Logic Compiler</h3>
+                    <div class="step-label step-logic">SYSTEM 2: LOGIC</div>
+                    <h3>The Rete Compiler</h3>
                     <p style="font-size: 0.95rem; margin-bottom: 0;">
-                        The <strong>Rete Engine</strong> translates the proposal into executable code. It checks the code against our Axiomatic Knowledge Graph for logical violations.
+                        Rete translates that guess into <strong>executable Python code</strong>. It checks against known biological rules (e.g., "Is Gene X actually expressed in this tissue?").
                     </p>
                     <div class="arrow-connector">&rarr;</div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="arch-card">
-                    <div class="step-num">03</div>
+                    <div class="step-label step-result">RESULT</div>
                     <h3>Secure Execution</h3>
                     <p style="font-size: 0.95rem; margin-bottom: 0;">
-                        The validated code runs in a sandboxed environment against your raw data. If the code errors, the hypothesis is rejected. <strong>Zero hallucinations.</strong>
+                        We run the code on your secure data. If the code errors or the data contradicts the hypothesis, we reject it. 
+                        <br><strong>We only return proven facts.</strong>
                     </p>
                 </div>
             </div>
@@ -360,6 +375,20 @@
                     </p>
                     <a href="mailto:admin@rete.bio" class="btn btn-primary" style="background: white; color: var(--text-main); border: none;">Request Platform Access</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Manifesto / Mission -->
+        <section class="container" style="padding-top: 40px;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <span style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-secondary);">Our Philosophy</span>
+                <h2 style="margin-top: 16px; margin-bottom: 24px;">Architected for Reliability.</h2>
+                <p>
+                    Rete was built on the thesis that Biology is an <strong>Operating System</strong> problem.
+                </p>
+                <p>
+                    Leveraging 16+ years of executive experience leading Data Science and AI transformations at global Pharma and Engineering organizations, we understand that in regulated environments, <strong>reliability is the only metric that matters.</strong>
+                </p>
             </div>
         </section>
 
